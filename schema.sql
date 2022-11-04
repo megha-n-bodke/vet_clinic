@@ -10,3 +10,5 @@ CREATE TABLE animals (
     weight_kg decimal not null
 );
 
+Add a column species of type string to your animals table. Modify your schema.sql file.
+AFTER TABLE animals ADD COLUMN species varchar(100);
