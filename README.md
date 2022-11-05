@@ -10,15 +10,6 @@ This repository includes files with plain SQL that can be used to recreate a dat
 - Use [data.sql](./data.sql) to populate tables with sample data.
 - Check [queries.sql](./queries.sql) for examples of queries that can be run on a newly created database. **Important note: this file might include queries that make changes in the database (e.g., remove records). Use them responsibly!**
 
-## screenshots
-
-![create-database-query](./screenshots/creatDB.png)
-![ctreate-table-query](./screenshots/createTable.png)
-![insert-data-query](./screenshots/insertRows.png)
-![Find all animals whose name ends in "mon".](./screenshots/findName.png)
-![List the name of all animals born between 2016 and 2019.](./screenshots/dateOfbirth.png)
-![List the name of all animals that are neutered and have less than 3 escape attempts.](./screenshots/escape3.png)
-
 ## Authors
 
 👤 **Megha Bodke**
