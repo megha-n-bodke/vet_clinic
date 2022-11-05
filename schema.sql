@@ -47,3 +47,22 @@ ALTER TABLE animals ADD COLUMN owner_id integer REFERENCES owners(id);
 select owner_id from animals;
 
 
+/* Relations */
+Create a table named vets with the following columns:
+id: integer (set it as autoincremented PRIMARY KEY)
+name: string
+age: integer
+date_of_graduation: date
+
+create table vets (
+id serial PRIMARY KEY not null, 
+name varchar(255) not null,
+age integer not null,
+date_of_graduation date not null
+);
+
+There is a many-to-many relationship between the tables species and vets: a vet can specialize in multiple species, and a species can have multiple vets specialized in it. Create a "join table" called specializations to handle this relationship
+create table specializations(species_id int references species(id),vets_id int references vets(id));
+
+There is a many-to-many relationship between the tables animals and vets: an animal can visit multiple vets and one vet can be visited by multiple animals. Create a "join table" called visits to handle this relationship, it should also keep track of the date of the visit.
+create table visits (animal_id int references animals(id),vets_id int references vets(id),date date not null);
