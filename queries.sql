@@ -17,19 +17,25 @@ SELECT * from animals WHERE weight_kg BETWEEN 10.4 AND 17.3;
 BEGIN;
 Inside a transaction update the animals table by setting the species column to unspecified. Verify that change was made. Then roll back the change and verify that the species columns went back to the state before the transaction.
 UPDATE animals SET species = 'unspecified';
+SELECT species from animals
 ROLLBACK;
+SELECT species from animals
 
 /* Transaction2 */
 BEGIN;
 UPDATE animals SET species = 'digimon' WHERE name LIKE '%mon';
 UPDATE animals SET species = 'pokemon' WHERE name NOT LIKE '%mon';
+SELECT species from animals;
 COMMIT;
+SELECT species from animals;
 
 /* Transaction3 */
 
 BEGIN;
 DELETE FROM animals;
 ROLLBACK;
+SELECT COUNT(*) FROM ANIMALS;
+
 
 /* Transaction4 */
 
