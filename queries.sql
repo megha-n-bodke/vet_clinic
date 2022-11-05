@@ -62,7 +62,37 @@ SELECT MIN(weight_kg), MAX(weight_kg), species FROM animals GROUP BY species;
 SELECT AVG(escape_attempts), species FROM animals WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31' GROUP BY species;
 
 
+/* Query Multiple tables */
 
 
+Insert the following data into the owners table:
+Sam Smith 34 years old.
+Jennifer Orwell 19 years old.
+Bob 45 years old.
+Melody Pond 77 years old.
+Dean Winchester 14 years old.
+Jodie Whittaker 38 years old.
+INSERT INTO owners (full_name, age) VALUES ('Sam Smith', 34), ('Jennifer Orwell', 19), ('Bob', 45), ('Melody Pond', 77), ('Dean Winchester', 14), ('Jodie Whittaker', 38);
 
+
+Write queries (using JOIN) to answer the following questions:
+What animals belong to Melody Pond?
+SELECT name FROM animals JOIN owners ON animals.owner_id = owners.id WHERE full_name = 'Melody Pond';
+List of all animals that are pokemon (their type is Pokemon).
+SELECT * FROM animals LEFT JOIN species ON animals.species_id = species.id WHERE species.name = 'Pokemon';
+List all owners and their animals, remember to include those that don't own any animal.
+SELECT full_name, name FROM owners LEFT JOIN animals ON owners.id = animals.owner_id;
+
+
+How many animals are there per species?
+SELECT COUNT(*), species.name FROM animals JOIN species ON animals.species_id = species.id GROUP BY species.name;
+
+List all Digimon owned by Jennifer Orwell.
+select * from animals join owners on animals.owner_id = owners.id join species on animals.species_id = species.id where full_name = 'Jennifer Orwell' and species.name = 'Digimon';
+
+
+List all animals owned by Dean Winchester that haven't tried to escape.
+select * from animals join owners on animals.owner_id = owners.id where full_name = 'Dean Winchester' and escape_attempts = 0;
+Who owns the most animals?
+select full_name, count(*) from animals join owners on animals.owner_id = owners.id group by full_name order by count(*) desc limit 1;
 
